@@ -4,10 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@dracor/react': link:../../../Library/pnpm/global/5/node_modules/@dracor/react
+
 importers:
 
   .:
     dependencies:
+      '@dracor/react':
+        specifier: link:../../../Library/pnpm/global/5/node_modules/@dracor/react
+        version: link:../../../Library/pnpm/global/5/node_modules/@dracor/react
       '@fortawesome/fontawesome-svg-core':
         specifier: ^7.2.0
         version: 7.2.0
