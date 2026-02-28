@@ -1,0 +1,23 @@
+import type {ApiInfo, Corpus} from './types';
+
+const apiUrl = String(import.meta.env.VITE_ELTEC_API);
+
+console.log(apiUrl);
+
+export async function fetchApiInfo() {
+  const res = await fetch(`${apiUrl}`);
+  if (!res.ok) throw new Error('Failed to fetch API info');
+  return (await res.json()) as ApiInfo;
+}
+
+export async function fetchCorpora() {
+  const res = await fetch(`${apiUrl}/corpora`);
+  if (!res.ok) throw new Error('Failed to fetch corpora');
+  return (await res.json()) as Corpus[];
+}
+
+export async function fetchCorpus(id: string) {
+  const res = await fetch(`${apiUrl}/corpora/${id}`);
+  if (!res.ok) throw new Error('Failed to fetch corpus');
+  return (await res.json()) as Corpus;
+}
