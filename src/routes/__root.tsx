@@ -17,6 +17,9 @@ const RootLayout = () => {
         >
           About
         </Link>{' '}
+        <Link to="/doc/api" className="[&.active]:font-bold">
+          API
+        </Link>{' '}
         <small>
           ELTeC API {info.version}, {corpora.length} corpora
         </small>

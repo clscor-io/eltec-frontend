@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CorporaRouteImport } from './routes/corpora'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DocApiRouteImport } from './routes/doc.api'
 import { Route as DocSplatRouteImport } from './routes/doc.$'
 import { Route as CorporaCorpusIdRouteImport } from './routes/corpora_.$corpusId'
 import { Route as CorporaCorpusIdTextIdRouteImport } from './routes/corpora_.$corpusId.$textId'
@@ -23,6 +24,11 @@ const CorporaRoute = CorporaRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocApiRoute = DocApiRouteImport.update({
+  id: '/doc/api',
+  path: '/doc/api',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocSplatRoute = DocSplatRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/corpora': typeof CorporaRoute
   '/corpora/$corpusId': typeof CorporaCorpusIdRouteWithChildren
   '/doc/$': typeof DocSplatRoute
+  '/doc/api': typeof DocApiRoute
   '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/corpora': typeof CorporaRoute
   '/corpora/$corpusId': typeof CorporaCorpusIdRouteWithChildren
   '/doc/$': typeof DocSplatRoute
+  '/doc/api': typeof DocApiRoute
   '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/corpora': typeof CorporaRoute
   '/corpora_/$corpusId': typeof CorporaCorpusIdRouteWithChildren
   '/doc/$': typeof DocSplatRoute
+  '/doc/api': typeof DocApiRoute
   '/corpora_/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/corpora'
     | '/corpora/$corpusId'
     | '/doc/$'
+    | '/doc/api'
     | '/corpora/$corpusId/$textId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/corpora'
     | '/corpora/$corpusId'
     | '/doc/$'
+    | '/doc/api'
     | '/corpora/$corpusId/$textId'
   id:
     | '__root__'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/corpora'
     | '/corpora_/$corpusId'
     | '/doc/$'
+    | '/doc/api'
     | '/corpora_/$corpusId/$textId'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   CorporaRoute: typeof CorporaRoute
   CorporaCorpusIdRoute: typeof CorporaCorpusIdRouteWithChildren
   DocSplatRoute: typeof DocSplatRoute
+  DocApiRoute: typeof DocApiRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -108,6 +121,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doc/api': {
+      id: '/doc/api'
+      path: '/doc/api'
+      fullPath: '/doc/api'
+      preLoaderRoute: typeof DocApiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/doc/$': {
@@ -151,6 +171,7 @@ const rootRouteChildren: RootRouteChildren = {
   CorporaRoute: CorporaRoute,
   CorporaCorpusIdRoute: CorporaCorpusIdRouteWithChildren,
   DocSplatRoute: DocSplatRoute,
+  DocApiRoute: DocApiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
