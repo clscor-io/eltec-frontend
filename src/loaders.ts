@@ -1,4 +1,4 @@
-import type {ApiInfo, Corpus} from './types';
+import type {ApiInfo, Corpus, Text} from './types';
 
 const apiUrl = String(import.meta.env.VITE_ELTEC_API);
 
@@ -20,4 +20,10 @@ export async function fetchCorpus(id: string) {
   const res = await fetch(`${apiUrl}/corpora/${id}`);
   if (!res.ok) throw new Error('Failed to fetch corpus');
   return (await res.json()) as Corpus;
+}
+
+export async function fetchCorpusTexts(id: string) {
+  const res = await fetch(`${apiUrl}/corpora/${id}/texts`);
+  if (!res.ok) throw new Error('Failed to fetch corpus texts');
+  return (await res.json()) as Text[];
 }
