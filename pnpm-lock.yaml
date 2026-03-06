@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@dracor/react':
-        specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(@fortawesome/fontawesome-svg-core@7.2.0)(@fortawesome/free-brands-svg-icons@7.2.0)(@fortawesome/free-solid-svg-icons@7.2.0)(@fortawesome/react-fontawesome@3.2.0(@fortawesome/fontawesome-svg-core@7.2.0)(react@19.2.4))(@headlessui/react@2.2.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-router@1.162.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/react-copy-to-clipboard@5.0.7)(CETEIcean@1.9.5)(react-copy-to-clipboard@5.1.0(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react-helmet-async@2.0.5(react@19.2.4))(react-markdown@10.1.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)(swagger-ui-react@5.31.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: link:../../../Library/pnpm/global/5/node_modules/@dracor/react
+        version: 1.0.0-rc.6(@fortawesome/fontawesome-svg-core@7.2.0)(@fortawesome/free-brands-svg-icons@7.2.0)(@fortawesome/free-solid-svg-icons@7.2.0)(@fortawesome/react-fontawesome@3.2.0(@fortawesome/fontawesome-svg-core@7.2.0)(react@19.2.4))(@headlessui/react@2.2.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-router@1.162.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/react-copy-to-clipboard@5.0.7)(CETEIcean@1.9.5)(react-copy-to-clipboard@5.1.0(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react-markdown@10.1.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)(swagger-ui-react@5.31.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@fortawesome/fontawesome-svg-core':
         specifier: ^7.2.0
         version: 7.2.0
@@ -217,8 +217,8 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@dracor/react@1.0.0-rc.5':
-    resolution: {integrity: sha512-GOynxMTS4K7WlYg2u9LbfCvIc9qtVWVtEbcRXOBV/ZAHH970g0fZ/Wk18PAY+0CjyAwiXrr3Bq9K93vqEDWwXg==}
+  '@dracor/react@1.0.0-rc.6':
+    resolution: {integrity: sha512-oFKTWP9UCtF9AtkGgSnkA3e3jHsE+BIM9fVbi9nU2LjCtrWHX7rOAj4cZxN6fCN/9Lld4/KEwLBB349Y9iLsLw==}
     peerDependencies:
       '@fortawesome/fontawesome-svg-core': ^7.2.0
       '@fortawesome/free-brands-svg-icons': ^7.2.0
@@ -232,7 +232,6 @@ packages:
       react: ^19.0.0
       react-copy-to-clipboard: ^5.1.0
       react-dom: ^19.0.0
-      react-helmet-async: ^2.0.5
       react-markdown: ^10.1.0
       swagger-ui-react: ^5.31.2
 
@@ -2717,7 +2716,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@dracor/react@1.0.0-rc.5(@fortawesome/fontawesome-svg-core@7.2.0)(@fortawesome/free-brands-svg-icons@7.2.0)(@fortawesome/free-solid-svg-icons@7.2.0)(@fortawesome/react-fontawesome@3.2.0(@fortawesome/fontawesome-svg-core@7.2.0)(react@19.2.4))(@headlessui/react@2.2.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-router@1.162.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/react-copy-to-clipboard@5.0.7)(CETEIcean@1.9.5)(react-copy-to-clipboard@5.1.0(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react-helmet-async@2.0.5(react@19.2.4))(react-markdown@10.1.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)(swagger-ui-react@5.31.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+  '@dracor/react@1.0.0-rc.6(@fortawesome/fontawesome-svg-core@7.2.0)(@fortawesome/free-brands-svg-icons@7.2.0)(@fortawesome/free-solid-svg-icons@7.2.0)(@fortawesome/react-fontawesome@3.2.0(@fortawesome/fontawesome-svg-core@7.2.0)(react@19.2.4))(@headlessui/react@2.2.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-router@1.162.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@tanstack/react-table@8.21.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(@types/react-copy-to-clipboard@5.0.7)(CETEIcean@1.9.5)(react-copy-to-clipboard@5.1.0(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react-markdown@10.1.0(@types/react@19.2.14)(react@19.2.4))(react@19.2.4)(swagger-ui-react@5.31.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 7.2.0
       '@fortawesome/free-brands-svg-icons': 7.2.0
@@ -2731,7 +2730,6 @@ snapshots:
       react: 19.2.4
       react-copy-to-clipboard: 5.1.0(react@19.2.4)
       react-dom: 19.2.4(react@19.2.4)
-      react-helmet-async: 2.0.5(react@19.2.4)
       react-markdown: 10.1.0(@types/react@19.2.14)(react@19.2.4)
       swagger-ui-react: 5.31.2(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
