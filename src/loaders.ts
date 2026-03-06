@@ -2,8 +2,6 @@ import type {ApiInfo, Corpus, Text} from './types';
 
 const apiUrl = String(import.meta.env.VITE_ELTEC_API);
 
-console.log(apiUrl);
-
 export async function fetchApiInfo() {
   const res = await fetch(`${apiUrl}`);
   if (!res.ok) throw new Error('Failed to fetch API info');
