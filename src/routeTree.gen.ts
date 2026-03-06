@@ -14,7 +14,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocApiRouteImport } from './routes/doc.api'
 import { Route as DocSplatRouteImport } from './routes/doc.$'
 import { Route as CorporaCorpusIdRouteImport } from './routes/corpora_.$corpusId'
-import { Route as CorporaCorpusIdTextIdRouteImport } from './routes/corpora_.$corpusId.$textId'
+import { Route as CorporaCorpusIdTextIdRouteImport } from './routes/corpora_.$corpusId_.$textId'
+import { Route as CorporaCorpusIdTextIdIndexRouteImport } from './routes/corpora_.$corpusId_.$textId.index'
+import { Route as CorporaCorpusIdTextIdFulltextRouteImport } from './routes/corpora_.$corpusId_.$textId.fulltext'
+import { Route as CorporaCorpusIdTextIdDownloadsRouteImport } from './routes/corpora_.$corpusId_.$textId.downloads'
 
 const CorporaRoute = CorporaRouteImport.update({
   id: '/corpora',
@@ -42,35 +45,61 @@ const CorporaCorpusIdRoute = CorporaCorpusIdRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const CorporaCorpusIdTextIdRoute = CorporaCorpusIdTextIdRouteImport.update({
-  id: '/$textId',
-  path: '/$textId',
-  getParentRoute: () => CorporaCorpusIdRoute,
+  id: '/corpora_/$corpusId_/$textId',
+  path: '/corpora/$corpusId/$textId',
+  getParentRoute: () => rootRouteImport,
 } as any)
+const CorporaCorpusIdTextIdIndexRoute =
+  CorporaCorpusIdTextIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CorporaCorpusIdTextIdRoute,
+  } as any)
+const CorporaCorpusIdTextIdFulltextRoute =
+  CorporaCorpusIdTextIdFulltextRouteImport.update({
+    id: '/fulltext',
+    path: '/fulltext',
+    getParentRoute: () => CorporaCorpusIdTextIdRoute,
+  } as any)
+const CorporaCorpusIdTextIdDownloadsRoute =
+  CorporaCorpusIdTextIdDownloadsRouteImport.update({
+    id: '/downloads',
+    path: '/downloads',
+    getParentRoute: () => CorporaCorpusIdTextIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/corpora': typeof CorporaRoute
-  '/corpora/$corpusId': typeof CorporaCorpusIdRouteWithChildren
+  '/corpora/$corpusId': typeof CorporaCorpusIdRoute
   '/doc/$': typeof DocSplatRoute
   '/doc/api': typeof DocApiRoute
-  '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
+  '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRouteWithChildren
+  '/corpora/$corpusId/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
+  '/corpora/$corpusId/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora/$corpusId/$textId/': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/corpora': typeof CorporaRoute
-  '/corpora/$corpusId': typeof CorporaCorpusIdRouteWithChildren
+  '/corpora/$corpusId': typeof CorporaCorpusIdRoute
   '/doc/$': typeof DocSplatRoute
   '/doc/api': typeof DocApiRoute
-  '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
+  '/corpora/$corpusId/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
+  '/corpora/$corpusId/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/corpora': typeof CorporaRoute
-  '/corpora_/$corpusId': typeof CorporaCorpusIdRouteWithChildren
+  '/corpora_/$corpusId': typeof CorporaCorpusIdRoute
   '/doc/$': typeof DocSplatRoute
   '/doc/api': typeof DocApiRoute
-  '/corpora_/$corpusId/$textId': typeof CorporaCorpusIdTextIdRoute
+  '/corpora_/$corpusId_/$textId': typeof CorporaCorpusIdTextIdRouteWithChildren
+  '/corpora_/$corpusId_/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
+  '/corpora_/$corpusId_/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora_/$corpusId_/$textId/': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +110,9 @@ export interface FileRouteTypes {
     | '/doc/$'
     | '/doc/api'
     | '/corpora/$corpusId/$textId'
+    | '/corpora/$corpusId/$textId/downloads'
+    | '/corpora/$corpusId/$textId/fulltext'
+    | '/corpora/$corpusId/$textId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -88,6 +120,8 @@ export interface FileRouteTypes {
     | '/corpora/$corpusId'
     | '/doc/$'
     | '/doc/api'
+    | '/corpora/$corpusId/$textId/downloads'
+    | '/corpora/$corpusId/$textId/fulltext'
     | '/corpora/$corpusId/$textId'
   id:
     | '__root__'
@@ -96,15 +130,19 @@ export interface FileRouteTypes {
     | '/corpora_/$corpusId'
     | '/doc/$'
     | '/doc/api'
-    | '/corpora_/$corpusId/$textId'
+    | '/corpora_/$corpusId_/$textId'
+    | '/corpora_/$corpusId_/$textId/downloads'
+    | '/corpora_/$corpusId_/$textId/fulltext'
+    | '/corpora_/$corpusId_/$textId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CorporaRoute: typeof CorporaRoute
-  CorporaCorpusIdRoute: typeof CorporaCorpusIdRouteWithChildren
+  CorporaCorpusIdRoute: typeof CorporaCorpusIdRoute
   DocSplatRoute: typeof DocSplatRoute
   DocApiRoute: typeof DocApiRoute
+  CorporaCorpusIdTextIdRoute: typeof CorporaCorpusIdTextIdRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -144,34 +182,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporaCorpusIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/corpora_/$corpusId/$textId': {
-      id: '/corpora_/$corpusId/$textId'
-      path: '/$textId'
+    '/corpora_/$corpusId_/$textId': {
+      id: '/corpora_/$corpusId_/$textId'
+      path: '/corpora/$corpusId/$textId'
       fullPath: '/corpora/$corpusId/$textId'
       preLoaderRoute: typeof CorporaCorpusIdTextIdRouteImport
-      parentRoute: typeof CorporaCorpusIdRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/corpora_/$corpusId_/$textId/': {
+      id: '/corpora_/$corpusId_/$textId/'
+      path: '/'
+      fullPath: '/corpora/$corpusId/$textId/'
+      preLoaderRoute: typeof CorporaCorpusIdTextIdIndexRouteImport
+      parentRoute: typeof CorporaCorpusIdTextIdRoute
+    }
+    '/corpora_/$corpusId_/$textId/fulltext': {
+      id: '/corpora_/$corpusId_/$textId/fulltext'
+      path: '/fulltext'
+      fullPath: '/corpora/$corpusId/$textId/fulltext'
+      preLoaderRoute: typeof CorporaCorpusIdTextIdFulltextRouteImport
+      parentRoute: typeof CorporaCorpusIdTextIdRoute
+    }
+    '/corpora_/$corpusId_/$textId/downloads': {
+      id: '/corpora_/$corpusId_/$textId/downloads'
+      path: '/downloads'
+      fullPath: '/corpora/$corpusId/$textId/downloads'
+      preLoaderRoute: typeof CorporaCorpusIdTextIdDownloadsRouteImport
+      parentRoute: typeof CorporaCorpusIdTextIdRoute
     }
   }
 }
 
-interface CorporaCorpusIdRouteChildren {
-  CorporaCorpusIdTextIdRoute: typeof CorporaCorpusIdTextIdRoute
+interface CorporaCorpusIdTextIdRouteChildren {
+  CorporaCorpusIdTextIdDownloadsRoute: typeof CorporaCorpusIdTextIdDownloadsRoute
+  CorporaCorpusIdTextIdFulltextRoute: typeof CorporaCorpusIdTextIdFulltextRoute
+  CorporaCorpusIdTextIdIndexRoute: typeof CorporaCorpusIdTextIdIndexRoute
 }
 
-const CorporaCorpusIdRouteChildren: CorporaCorpusIdRouteChildren = {
-  CorporaCorpusIdTextIdRoute: CorporaCorpusIdTextIdRoute,
+const CorporaCorpusIdTextIdRouteChildren: CorporaCorpusIdTextIdRouteChildren = {
+  CorporaCorpusIdTextIdDownloadsRoute: CorporaCorpusIdTextIdDownloadsRoute,
+  CorporaCorpusIdTextIdFulltextRoute: CorporaCorpusIdTextIdFulltextRoute,
+  CorporaCorpusIdTextIdIndexRoute: CorporaCorpusIdTextIdIndexRoute,
 }
 
-const CorporaCorpusIdRouteWithChildren = CorporaCorpusIdRoute._addFileChildren(
-  CorporaCorpusIdRouteChildren,
-)
+const CorporaCorpusIdTextIdRouteWithChildren =
+  CorporaCorpusIdTextIdRoute._addFileChildren(
+    CorporaCorpusIdTextIdRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CorporaRoute: CorporaRoute,
-  CorporaCorpusIdRoute: CorporaCorpusIdRouteWithChildren,
+  CorporaCorpusIdRoute: CorporaCorpusIdRoute,
   DocSplatRoute: DocSplatRoute,
   DocApiRoute: DocApiRoute,
+  CorporaCorpusIdTextIdRoute: CorporaCorpusIdTextIdRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

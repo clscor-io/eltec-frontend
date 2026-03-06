@@ -27,3 +27,9 @@ export async function fetchCorpusTexts(id: string) {
   if (!res.ok) throw new Error('Failed to fetch corpus texts');
   return (await res.json()) as Text[];
 }
+
+export async function fetchText(corpus: string, id: string) {
+  const res = await fetch(`${apiUrl}/corpora/${corpus}/texts/${id}`);
+  if (!res.ok) throw new Error('Failed to fetch text data');
+  return (await res.json()) as Text;
+}
