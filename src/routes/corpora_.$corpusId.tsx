@@ -21,10 +21,5 @@ function RouteComponent() {
     return <strong>No such corpus!</strong>;
   }
 
-  return (
-    <>
-      <title>ELTeC: {corpus.title}</title>
-      <Corpus meta={corpus} texts={texts} />
-    </>
-  );
+  return <Corpus meta={corpus} texts={texts} />;
 }

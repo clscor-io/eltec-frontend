@@ -64,6 +64,7 @@ export default function CorpusComponent({
   return (
     <section>
       <h1>{title}</h1>
+      <title>{`${title} (ELTeC)`}</title>
       {commit && (
         <p>
           <Commit repo={repository.split('#')[0]}>{commit}</Commit>
