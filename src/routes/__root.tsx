@@ -5,7 +5,7 @@ import pkg from '../../package.json';
 import {fetchApiInfo, fetchCorpora} from '../loaders';
 
 const RootLayout = () => {
-  const {info, corpora} = Route.useLoaderData();
+  const {corpora} = Route.useLoaderData();
   return (
     <>
       <NavBar
@@ -40,11 +40,6 @@ const RootLayout = () => {
       />
       <div className="p-4">
         <Outlet />
-      </div>
-      <div className="p-4 pt-8 opacity-45">
-        <small>
-          ELTeC API: {info.version}, eXist: {info.existdb}
-        </small>
       </div>
       <TanStackRouterDevtools />
     </>
