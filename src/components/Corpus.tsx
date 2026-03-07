@@ -1,6 +1,7 @@
 import {useMemo} from 'react';
 import {Link} from '@tanstack/react-router';
 import {type ColumnDef} from '@tanstack/react-table';
+import ReactMarkdown from 'react-markdown';
 import {Commit, IdLink, Table} from '@dracor/react';
 import type {Corpus, Text} from '../types';
 
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export default function CorpusComponent({
-  meta: {title, commit, repository, name},
+  meta: {title, description, commit, repository, name},
   texts,
 }: Props) {
   const columns = useMemo<ColumnDef<Text>[]>(
@@ -65,6 +66,11 @@ export default function CorpusComponent({
     <section>
       <h1>{title}</h1>
       <title>{`${title} (ELTeC)`}</title>
+      {description && (
+        <div>
+          <ReactMarkdown>{description}</ReactMarkdown>
+        </div>
+      )}
       {commit && (
         <p>
           <Commit repo={repository.split('#')[0]}>{commit}</Commit>
