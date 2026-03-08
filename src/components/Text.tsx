@@ -9,16 +9,6 @@ export interface Props {
 export default function Text({data}: Props) {
   const authors = data?.authors?.map((a) => a.name).join(', ');
   const authorTitle = data ? `${authors}: ${data.title}` : '';
-  const wikidataIds = data?.authors
-    ?.map((a) => {
-      // eslint-disable-next-line
-      const m = a.ref?.match(
-        /https:\/\/www\.wikidata\.org\/(?:wiki|entity)\/(Q[0-9]+)/
-      );
-      return m ? m[1] : null;
-    })
-    .filter((id) => !!id);
-
   return (
     <div>
       <title>{authorTitle}</title>
@@ -30,9 +20,11 @@ export default function Text({data}: Props) {
             <IdCopy>{data.id}</IdCopy>
           </div>
           <div>
-            {wikidataIds?.map((id) => (
-              <AuthorInfo key={id} wikidataId={id!} name="" />
-            ))}
+            {data.authors
+              .filter(({wikidataId}) => !!wikidataId)
+              .map(({wikidataId}) => (
+                <AuthorInfo key={wikidataId} wikidataId={wikidataId!} name="" />
+              ))}
           </div>
         </div>
         <Tabs
