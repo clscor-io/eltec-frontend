@@ -31,6 +31,22 @@ export interface Author {
   ref: string;
 }
 
+export interface SourceLink {
+  url: string;
+  text?: string;
+}
+
+export interface TextSource {
+  bibl: string;
+  type?: string;
+  author?: string;
+  title?: string;
+  year?: string;
+  publisher?: string;
+  placePublished?: string;
+  links?: SourceLink[];
+}
+
 export interface TextMetrics {
   numOfParagraphs: number;
   numOfWords: number;
@@ -46,4 +62,5 @@ export interface Text {
   corpusUrl: string;
   commit?: string;
   metrics: TextMetrics;
+  sources: TextSource[];
 }
