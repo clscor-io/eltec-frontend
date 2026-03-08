@@ -1,5 +1,5 @@
 import {Outlet} from '@tanstack/react-router';
-import {AuthorInfo, IdCopy, Tabs} from '@dracor/react';
+import {AuthorInfo, IdCopy, IdLink, Tabs} from '@dracor/react';
 import type {Text as TextData} from '../types';
 
 export interface Props {
@@ -17,7 +17,10 @@ export default function Text({data}: Props) {
           <div>
             <h2 className="text-sm mb-1">{authors}</h2>
             <h1>{data.title}</h1>
-            <IdCopy>{data.id}</IdCopy>
+            <IdCopy>{data.id}</IdCopy>{' '}
+            {data.wikidataId && (
+              <IdLink>{`wikidata:${data.wikidataId}`}</IdLink>
+            )}
           </div>
           <div>
             {data.authors
