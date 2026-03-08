@@ -25,11 +25,17 @@ export default function CorpusComponent({
         },
         cell: (info) => (
           <div>
-            {info.row.original.authors.map(({name, ref}) => (
+            {info.row.original.authors.map(({name, ref, wikidataId}) => (
               <div key={name}>
                 <span>{name}</span>
                 <br />
-                {ref && <IdLink>{ref}</IdLink>}
+                {wikidataId ? (
+                  <IdLink>{`wikidata:${wikidataId}`}</IdLink>
+                ) : (
+                  <small>
+                    <IdLink>{ref || ''}</IdLink>
+                  </small>
+                )}
               </div>
             ))}
           </div>
@@ -39,9 +45,15 @@ export default function CorpusComponent({
         accessorKey: 'title',
         header: 'Title',
         cell: (info) => (
-          <Link className="text-lg" to={info.row.original.name}>
-            {`${info.row.original.title}`}
-          </Link>
+          <>
+            <Link className="text-lg" to={info.row.original.name}>
+              {`${info.row.original.title}`}
+            </Link>
+            <br />
+            {info.row.original.wikidataId && (
+              <IdLink>{`wikidata:${info.row.original.wikidataId}`}</IdLink>
+            )}
+          </>
         ),
       },
       {
