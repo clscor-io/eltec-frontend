@@ -32,7 +32,9 @@ export default function Text({data}: Props) {
         </div>
         <Tabs
           data={[
+            // @ts-expect-error - FIXME `to`
             {label: 'Full text', to: '../fulltext'},
+            // @ts-expect-error - FIXME `to`
             {label: 'Downloads', to: '../downloads'},
           ]}
         />
