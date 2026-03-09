@@ -4,13 +4,17 @@ import {NavBar} from '@dracor/react';
 import pkg from '../../package.json';
 import {fetchApiInfo, fetchCorpora} from '../loaders';
 
+const version = import.meta.env.VITE_VERSION
+  ? String(import.meta.env.VITE_VERSION)
+  : pkg.version;
+
 const RootLayout = () => {
   const {corpora} = Route.useLoaderData();
   return (
     <>
       <NavBar
         title="ELTeC"
-        version={`version ${pkg.version}`}
+        version={`version ${version}`}
         gitHubUrl="https://github.com/clscor-io/eltec-api"
         navItems={[
           {
