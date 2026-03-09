@@ -1,0 +1,16 @@
+name: Deploy to production
+
+on:
+  workflow_dispatch:
+  release:
+    types: [released]
+
+jobs:
+  production:
+    uses: clscor-io/eltec-frontend/.github/workflows/deployment.yml@main
+    with:
+      host: eltec.clscor.io
+      deploy-path: /var/www/html
+    secrets:
+      deploy-key: ${{ secrets.CLSCOR_DEPLOY_KEY }}
+      deploy-user: ${{ secrets.CLSCOR_DEPLOY_USER }}
