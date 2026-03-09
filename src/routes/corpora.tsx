@@ -12,7 +12,7 @@ function CorporaComponent() {
     <>
       <title>ELTeC Corpora</title>
       <section>
-        <div className="flex flex-row justify-center pb-4">
+        <div className="flex flex-row flex-wrap gap-4 justify-center pb-4">
           {corpora.map((corpus) => (
             <CorpusCard corpus={corpus} key={corpus.name} />
           ))}

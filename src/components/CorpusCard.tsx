@@ -26,14 +26,14 @@ export default function CorpusCard({corpus}: {corpus: Corpus}) {
   // strip possible branch fragment from repo URI
   const repoUrl = repository?.split('#')[0];
   return (
-    <div className="rounded-xl inline-block shadow-lg">
-      <div className="bg-white rounded-t-xl p-2 text-2xl font-bold">
-        <Link to={name} className="text-primary">
+    <div className="rounded-xl inline-block shadow-lg w-full md:w-96">
+      <div className="bg-white rounded-t-xl p-2 text-2xl font-bold whitespace-nowrap text-ellipsis overflow-hidden">
+        <Link to={name} className="text-primary" title={title}>
           {title}
         </Link>
       </div>
       {metrics && (
-        <table className="m-0">
+        <table className="m-0 w-full">
           <tbody>
             <CorpusCardRow
               label="Number of texts"
