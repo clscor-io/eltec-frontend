@@ -25,17 +25,15 @@ export default function CorpusComponent({
         },
         cell: (info) => (
           <div>
-            {info.row.original.authors.map(({name, ref, wikidataId}) => (
+            {info.row.original.authors.map(({name, refs}) => (
               <div key={name}>
                 <span>{name}</span>
                 <br />
-                {wikidataId ? (
-                  <IdLink>{`wikidata:${wikidataId}`}</IdLink>
-                ) : (
-                  <small>
-                    <IdLink>{ref || ''}</IdLink>
-                  </small>
-                )}
+                {refs?.map((r) => (
+                  <span key={r}>
+                    <IdLink>{r}</IdLink>{' '}
+                  </span>
+                ))}
               </div>
             ))}
           </div>
@@ -44,17 +42,20 @@ export default function CorpusComponent({
       {
         accessorKey: 'title',
         header: 'Title',
-        cell: (info) => (
-          <>
-            <Link className="text-lg" to={info.row.original.name}>
-              {`${info.row.original.title}`}
-            </Link>
-            <br />
-            {info.row.original.wikidataId && (
-              <IdLink>{`wikidata:${info.row.original.wikidataId}`}</IdLink>
-            )}
-          </>
-        ),
+        cell: (info) => {
+          const wikidataRef = info.row.original.refs?.find((r) =>
+            r.startsWith('wikidata:')
+          );
+          return (
+            <>
+              <Link className="text-lg" to={info.row.original.name}>
+                {`${info.row.original.title}`}
+              </Link>
+              <br />
+              {wikidataRef && <IdLink>{wikidataRef}</IdLink>}
+            </>
+          );
+        },
       },
       {
         accessorKey: 'sources',

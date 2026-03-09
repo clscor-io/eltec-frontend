@@ -9,6 +9,15 @@ export interface Props {
 export default function Text({data}: Props) {
   const authors = data?.authors?.map((a) => a.name).join(', ');
   const authorTitle = data ? `${authors}: ${data.title}` : '';
+
+  const wikidataRef = data.refs?.find((r) => r.startsWith('wikidata:'));
+
+  const authorQids = data.authors
+    .filter(({refs}) => refs.find((r) => r.startsWith('wikidata:')))
+    .map(
+      ({refs}) => refs.find((r) => r.startsWith('wikidata:'))?.split(':')[1]
+    );
+
   return (
     <div>
       <title>{authorTitle}</title>
@@ -18,16 +27,12 @@ export default function Text({data}: Props) {
             <h2 className="text-sm mb-1">{authors}</h2>
             <h1>{data.title}</h1>
             <IdCopy>{data.id}</IdCopy>{' '}
-            {data.wikidataId && (
-              <IdLink>{`wikidata:${data.wikidataId}`}</IdLink>
-            )}
+            {wikidataRef && <IdLink>{wikidataRef}</IdLink>}
           </div>
           <div>
-            {data.authors
-              .filter(({wikidataId}) => !!wikidataId)
-              .map(({wikidataId}) => (
-                <AuthorInfo key={wikidataId} wikidataId={wikidataId!} name="" />
-              ))}
+            {authorQids.map((qid) => (
+              <AuthorInfo key={qid} wikidataId={qid!} name="" />
+            ))}
           </div>
         </div>
         <Tabs

@@ -28,8 +28,7 @@ export interface Corpus {
 
 export interface Author {
   name: string;
-  ref: string;
-  wikidataId?: string;
+  refs: string[];
 }
 
 export interface SourceLink {
@@ -63,6 +62,6 @@ export interface Text {
   corpusUrl: string;
   commit?: string;
   metrics: TextMetrics;
+  refs?: string[];
   sources: TextSource[];
-  wikidataId?: string;
 }
