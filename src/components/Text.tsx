@@ -13,9 +13,9 @@ export default function Text({data}: Props) {
   const wikidataRef = data.refs?.find((r) => r.startsWith('wikidata:'));
 
   const authorQids = data.authors
-    .filter(({refs}) => refs.find((r) => r.startsWith('wikidata:')))
+    .filter(({refs}) => refs?.find((r) => r.startsWith('wikidata:')))
     .map(
-      ({refs}) => refs.find((r) => r.startsWith('wikidata:'))?.split(':')[1]
+      ({refs}) => refs?.find((r) => r.startsWith('wikidata:'))?.split(':')[1]
     );
 
   return (

@@ -28,7 +28,7 @@ export interface Corpus {
 
 export interface Author {
   name: string;
-  refs: string[];
+  refs?: string[];
 }
 
 export interface SourceLink {
