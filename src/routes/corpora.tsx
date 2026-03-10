@@ -7,7 +7,7 @@ export const Route = createFileRoute('/corpora')({
 });
 
 function CorporaComponent() {
-  const {corpora, info} = RootRoute.useLoaderData();
+  const {corpora} = RootRoute.useLoaderData();
   return (
     <>
       <title>ELTeC Corpora</title>
@@ -18,11 +18,6 @@ function CorporaComponent() {
           ))}
         </div>
       </section>
-      <div className="pt-8 opacity-45 text-center">
-        <small>
-          ELTeC API: {info.version}, eXist: {info.existdb}
-        </small>
-      </div>
     </>
   );
 }

@@ -3,13 +3,14 @@ import {TanStackRouterDevtools} from '@tanstack/react-router-devtools';
 import {NavBar} from '@dracor/react';
 import pkg from '../../package.json';
 import {fetchApiInfo, fetchCorpora} from '../loaders';
+import Footer from '../components/Footer';
 
-const version = import.meta.env.VITE_VERSION
+const frontendVersion = import.meta.env.VITE_VERSION
   ? String(import.meta.env.VITE_VERSION)
   : pkg.version;
 
 const RootLayout = () => {
-  const {corpora} = Route.useLoaderData();
+  const {corpora, info} = Route.useLoaderData();
   return (
     <>
       <NavBar
@@ -46,6 +47,11 @@ const RootLayout = () => {
       <div className="p-4">
         <Outlet />
       </div>
+      <Footer
+        apiVersion={info.version}
+        existVersion={info.existdb}
+        frontendVersion={frontendVersion}
+      />
       <TanStackRouterDevtools />
     </>
   );
