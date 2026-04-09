@@ -11,7 +11,7 @@
     "preview": "VITE_VERSION=`./version.sh` vite preview"
   },
   "dependencies": {
-    "@dracor/react": "^1.0.0",
+    "@dracor/react": "^1.1.0",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
