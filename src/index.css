@@ -1,3 +1,32 @@
 @import 'tailwindcss';
 @import '@dracor/react/dracor.css';
 @source '../node_modules/@dracor/react';
+
+#eu-funding-note,
+#dfg-funding-note,
+#oscars-funding-note {
+  padding: 1em;
+  background-color: #e3e8f1;
+  font-weight: normal;
+  border-radius: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+
+  p {
+    margin: 0;
+  }
+}
+
+#eu-funding-note img {
+  height: 3em;
+}
+
+#dfg-funding-note img {
+  height: 4em;
+}
+
+#oscars-funding-note img {
+  height: 3em;
+}

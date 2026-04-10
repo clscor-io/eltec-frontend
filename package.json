@@ -25,6 +25,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^19.2.4",
     "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
     "swagger-ui-react": "^5.32.0"
   },
   "devDependencies": {

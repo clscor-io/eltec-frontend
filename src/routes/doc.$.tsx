@@ -1,4 +1,5 @@
 import {createFileRoute, useParams} from '@tanstack/react-router';
+import rehypeRaw from 'rehype-raw';
 import {DocPage} from '@dracor/react';
 
 export const Route = createFileRoute('/doc/$')({
@@ -7,5 +8,5 @@ export const Route = createFileRoute('/doc/$')({
 
 function Docs() {
   const {_splat} = useParams({from: '/doc/$'});
-  return <DocPage url={`/doc/${_splat}.md`} />;
+  return <DocPage url={`/doc/${_splat}.md`} rehypePlugins={[rehypeRaw]} />;
 }
