@@ -22,7 +22,7 @@ function CorpusCardRow({label, data, dataStyle}: RowProps) {
 }
 
 export default function CorpusCard({corpus}: {corpus: Corpus}) {
-  const {name, title, metrics, updated, commit, repository} = corpus;
+  const {name, title, metrics, updated, commit, repository, e5c} = corpus;
   // strip possible branch fragment from repo URI
   const repoUrl = repository?.split('#')[0];
   return (
@@ -36,10 +36,11 @@ export default function CorpusCard({corpus}: {corpus: Corpus}) {
         <table className="m-0 w-full">
           <tbody>
             <CorpusCardRow
-              label="Number of texts"
-              data={metrics.numOfTexts}
+              label="ELTeC Score"
+              data={e5c.e5c}
               dataStyle="text-2xl"
             />
+            <CorpusCardRow label="Number of texts" data={metrics.numOfTexts} />
             <CorpusCardRow
               label="Number of authors"
               data={metrics.numOfAuthors}
