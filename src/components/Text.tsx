@@ -43,7 +43,9 @@ export default function Text({data}: Props) {
             {label: 'Downloads', to: '../downloads'},
           ]}
         />
+        <div className="pt-3">
         <Outlet />
+        </div>
       </section>
     </div>
   );

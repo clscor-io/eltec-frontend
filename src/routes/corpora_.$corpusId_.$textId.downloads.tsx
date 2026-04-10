@@ -15,7 +15,7 @@ function RouteComponent() {
   const url = `${apiUrl}/corpora/${corpusId}/texts/${textId}`;
 
   return (
-    <div className="flex flex-row gap-4 mt-4">
+    <div className="flex flex-row gap-4">
       <div>
         <h3>Metadata (JSON)</h3>
         <DownloadButton href={url} type="json" name={`${textId}.json`} />
