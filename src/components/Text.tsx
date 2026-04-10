@@ -41,10 +41,12 @@ export default function Text({data}: Props) {
             {label: 'Full text', to: '../fulltext'},
             // @ts-expect-error - FIXME `to`
             {label: 'Downloads', to: '../downloads'},
+            // @ts-expect-error - FIXME `to`
+            {label: 'Tools', to: '../tools'},
           ]}
         />
         <div className="pt-3">
-        <Outlet />
+          <Outlet />
         </div>
       </section>
     </div>

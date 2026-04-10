@@ -16,6 +16,7 @@ import { Route as DocSplatRouteImport } from './routes/doc.$'
 import { Route as CorporaCorpusIdRouteImport } from './routes/corpora_.$corpusId'
 import { Route as CorporaCorpusIdTextIdRouteImport } from './routes/corpora_.$corpusId_.$textId'
 import { Route as CorporaCorpusIdTextIdIndexRouteImport } from './routes/corpora_.$corpusId_.$textId.index'
+import { Route as CorporaCorpusIdTextIdToolsRouteImport } from './routes/corpora_.$corpusId_.$textId.tools'
 import { Route as CorporaCorpusIdTextIdFulltextRouteImport } from './routes/corpora_.$corpusId_.$textId.fulltext'
 import { Route as CorporaCorpusIdTextIdDownloadsRouteImport } from './routes/corpora_.$corpusId_.$textId.downloads'
 
@@ -55,6 +56,12 @@ const CorporaCorpusIdTextIdIndexRoute =
     path: '/',
     getParentRoute: () => CorporaCorpusIdTextIdRoute,
   } as any)
+const CorporaCorpusIdTextIdToolsRoute =
+  CorporaCorpusIdTextIdToolsRouteImport.update({
+    id: '/tools',
+    path: '/tools',
+    getParentRoute: () => CorporaCorpusIdTextIdRoute,
+  } as any)
 const CorporaCorpusIdTextIdFulltextRoute =
   CorporaCorpusIdTextIdFulltextRouteImport.update({
     id: '/fulltext',
@@ -77,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdRouteWithChildren
   '/corpora/$corpusId/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
   '/corpora/$corpusId/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora/$corpusId/$textId/tools': typeof CorporaCorpusIdTextIdToolsRoute
   '/corpora/$corpusId/$textId/': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRoutesByTo {
@@ -87,6 +95,7 @@ export interface FileRoutesByTo {
   '/doc/api': typeof DocApiRoute
   '/corpora/$corpusId/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
   '/corpora/$corpusId/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora/$corpusId/$textId/tools': typeof CorporaCorpusIdTextIdToolsRoute
   '/corpora/$corpusId/$textId': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRoutesById {
@@ -99,6 +108,7 @@ export interface FileRoutesById {
   '/corpora_/$corpusId_/$textId': typeof CorporaCorpusIdTextIdRouteWithChildren
   '/corpora_/$corpusId_/$textId/downloads': typeof CorporaCorpusIdTextIdDownloadsRoute
   '/corpora_/$corpusId_/$textId/fulltext': typeof CorporaCorpusIdTextIdFulltextRoute
+  '/corpora_/$corpusId_/$textId/tools': typeof CorporaCorpusIdTextIdToolsRoute
   '/corpora_/$corpusId_/$textId/': typeof CorporaCorpusIdTextIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -112,6 +122,7 @@ export interface FileRouteTypes {
     | '/corpora/$corpusId/$textId'
     | '/corpora/$corpusId/$textId/downloads'
     | '/corpora/$corpusId/$textId/fulltext'
+    | '/corpora/$corpusId/$textId/tools'
     | '/corpora/$corpusId/$textId/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/doc/api'
     | '/corpora/$corpusId/$textId/downloads'
     | '/corpora/$corpusId/$textId/fulltext'
+    | '/corpora/$corpusId/$textId/tools'
     | '/corpora/$corpusId/$textId'
   id:
     | '__root__'
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
     | '/corpora_/$corpusId_/$textId'
     | '/corpora_/$corpusId_/$textId/downloads'
     | '/corpora_/$corpusId_/$textId/fulltext'
+    | '/corpora_/$corpusId_/$textId/tools'
     | '/corpora_/$corpusId_/$textId/'
   fileRoutesById: FileRoutesById
 }
@@ -196,6 +209,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporaCorpusIdTextIdIndexRouteImport
       parentRoute: typeof CorporaCorpusIdTextIdRoute
     }
+    '/corpora_/$corpusId_/$textId/tools': {
+      id: '/corpora_/$corpusId_/$textId/tools'
+      path: '/tools'
+      fullPath: '/corpora/$corpusId/$textId/tools'
+      preLoaderRoute: typeof CorporaCorpusIdTextIdToolsRouteImport
+      parentRoute: typeof CorporaCorpusIdTextIdRoute
+    }
     '/corpora_/$corpusId_/$textId/fulltext': {
       id: '/corpora_/$corpusId_/$textId/fulltext'
       path: '/fulltext'
@@ -216,12 +236,14 @@ declare module '@tanstack/react-router' {
 interface CorporaCorpusIdTextIdRouteChildren {
   CorporaCorpusIdTextIdDownloadsRoute: typeof CorporaCorpusIdTextIdDownloadsRoute
   CorporaCorpusIdTextIdFulltextRoute: typeof CorporaCorpusIdTextIdFulltextRoute
+  CorporaCorpusIdTextIdToolsRoute: typeof CorporaCorpusIdTextIdToolsRoute
   CorporaCorpusIdTextIdIndexRoute: typeof CorporaCorpusIdTextIdIndexRoute
 }
 
 const CorporaCorpusIdTextIdRouteChildren: CorporaCorpusIdTextIdRouteChildren = {
   CorporaCorpusIdTextIdDownloadsRoute: CorporaCorpusIdTextIdDownloadsRoute,
   CorporaCorpusIdTextIdFulltextRoute: CorporaCorpusIdTextIdFulltextRoute,
+  CorporaCorpusIdTextIdToolsRoute: CorporaCorpusIdTextIdToolsRoute,
   CorporaCorpusIdTextIdIndexRoute: CorporaCorpusIdTextIdIndexRoute,
 }
 
