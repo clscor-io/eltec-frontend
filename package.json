@@ -17,7 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.0",
     "@headlessui/react": "^2.2.10",
-    "@tanstack/react-router": "^1.168.10",
+    "@tanstack/react-router": "^1.168.13",
     "@tanstack/react-router-devtools": "^1.166.11",
     "@tanstack/react-table": "^8.21.3",
     "CETEIcean": "^1.9.5",
@@ -35,17 +35,17 @@
     "@tanstack/router-plugin": "^1.167.12",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.4",
-    "eslint": "^10.0.2",
+    "@vitejs/plugin-react": "^5.2.0",
+    "eslint": "^10.2.0",
     "eslint-plugin-react-dom": "^2.13.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-react-x": "^2.13.0",
     "globals": "^17.4.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "tailwindcss": "^4.2.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.58.1",
-    "vite": "^7.3.1"
+    "vite": "^7.3.2"
   }
 }
