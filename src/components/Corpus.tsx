@@ -58,17 +58,10 @@ export default function CorpusComponent({
         },
       },
       {
-        accessorKey: 'sources',
-        header: 'Year of first edition',
-        accessorFn: (row) => {
-          const firstEdition = row.sources.find(
-            ({type}) => type === 'firstEdition'
-          );
-          return firstEdition?.year ?? '';
-        },
-        cell: (info) =>
-          info.row.original.sources.find(({type}) => type === 'firstEdition')
-            ?.year,
+        accessorKey: 'referenceYear',
+        header: 'Reference Year',
+        accessorFn: (row) => row.referenceYear,
+        cell: (info) => info.row.original.referenceYear,
       },
       {
         accessorKey: 'words',

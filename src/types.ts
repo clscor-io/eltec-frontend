@@ -62,6 +62,7 @@ export interface Text {
   corpusUrl: string;
   commit?: string;
   metrics: TextMetrics;
+  referenceYear: string;
   refs?: string[];
   sources: TextSource[];
 }
