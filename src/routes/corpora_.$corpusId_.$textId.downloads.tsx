@@ -28,6 +28,14 @@ function RouteComponent() {
           name={`${textId}.tei.xml`}
         />
       </div>
+      <div>
+        <h3>Plain text</h3>
+        <DownloadButton
+          href={`${url}/plaintext`}
+          type="txt"
+          name={`${textId}.txt`}
+        />
+      </div>
     </div>
   );
 }
