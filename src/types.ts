@@ -34,20 +34,22 @@ export interface BalanceDistribution {
   };
 }
 
+export interface E5CSubscores {
+  text: number;
+  female: number;
+  male: number;
+  single: number;
+  triple: number;
+  short: number;
+  long: number;
+  range: number;
+  reprint: number;
+}
+
 export interface E5CScore {
   class: 'core' | 'plus' | 'extended';
   e5c: number;
-  subscores: {
-    text: number;
-    female: number;
-    male: number;
-    single: number;
-    triple: number;
-    short: number;
-    long: number;
-    range: number;
-    reprint: number;
-  };
+  subscores: E5CSubscores;
 }
 
 export interface Corpus {

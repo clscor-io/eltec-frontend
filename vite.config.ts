@@ -13,6 +13,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      nanoid: 'nanoid/non-secure',
+    },
+  },
   server: {
     open: true,
     proxy: {
