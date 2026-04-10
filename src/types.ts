@@ -12,6 +12,44 @@ export interface CorpusMetrics {
   numOfAuthors: number;
 }
 
+export interface BalanceDistribution {
+  gender: {
+    M: number;
+    F: number;
+  };
+  reprintCount: {
+    high: number;
+    low: number;
+  };
+  size: {
+    short: number;
+    medium: number;
+    long: number;
+  };
+  timeSlot: {
+    T1: number; // 1840–1859
+    T2: number; // 1860–1879
+    T3: number; // 1880–1899
+    T4: number; // 1900–1919
+  };
+}
+
+export interface E5CScore {
+  class: 'core' | 'plus' | 'extended';
+  e5c: number;
+  subscores: {
+    text: number;
+    female: number;
+    male: number;
+    single: number;
+    triple: number;
+    short: number;
+    long: number;
+    range: number;
+    reprint: number;
+  };
+}
+
 export interface Corpus {
   name: string;
   title: string;
@@ -24,6 +62,8 @@ export interface Corpus {
   textsUrl: string;
   updated: string;
   commit?: string;
+  balance: BalanceDistribution;
+  e5c: E5CScore;
 }
 
 export interface Author {
@@ -56,6 +96,7 @@ export interface TextMetrics {
 export interface Text {
   id: string;
   authors: Author[];
+  authorGender: 'M' | 'F';
   title: string;
   name: string;
   corpus: string;
@@ -64,5 +105,8 @@ export interface Text {
   metrics: TextMetrics;
   referenceYear: string;
   refs?: string[];
+  reprintCount: 'low' | 'high';
+  sizeCategory: 'short' | 'medium' | 'long';
+  timeSlot: 'T1' | 'T2' | 'T3' | 'T4';
   sources: TextSource[];
 }
