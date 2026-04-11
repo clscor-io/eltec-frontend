@@ -14,9 +14,8 @@ const RootLayout = () => {
   return (
     <>
       <NavBar
-        title="ELTeC"
-        // FIXME: this should be changed to a `subtitle` prop in @dracor/react
-        version="European Literary Text Collection"
+        title="European Literary Text Collection (ELTeC)"
+        logo="/distant-reading.svg"
         gitHubUrl="https://github.com/clscor-io/eltec-api"
         navItems={[
           {

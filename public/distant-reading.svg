@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="93.333 0 28.58 28.581"
+  fill="white">
+  <g>
+    <rect x="103.229" y="9.198" width="8.787" height="1.6"/>
+  </g>
+  <g>
+    <rect x="103.229" y="13.49" width="8.787" height="1.6"/>
+  </g>
+  <g>
+    <rect x="103.229" y="17.782" width="8.787" height="1.6"/>
+  </g>
+  <g>
+    <polygon points="98.628,28.581 93.333,28.581 93.333,0 98.628,0 98.628,1.6 94.932,1.6 94.932,26.981 98.628,26.981 	"/>
+  </g>
+  <g>
+    <polygon points="121.913,28.581 116.615,28.581 116.615,26.981 120.313,26.981 120.313,1.6 116.615,1.6 116.615,0 121.913,0 	"/>
+  </g>
+  <path d="M112.956,3.679H99.203v21.223h16.839V6.766L112.956,3.679z M100.802,23.302V5.278h11.209V7.71h2.431v15.592H100.802z"/>
+</svg>
