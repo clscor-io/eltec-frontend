@@ -17,7 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.0",
     "@headlessui/react": "^2.2.10",
-    "@tanstack/react-router": "^1.168.13",
+    "@tanstack/react-router": "^1.170.7",
     "@tanstack/react-router-devtools": "^1.166.11",
     "@tanstack/react-table": "^8.21.3",
     "CETEIcean": "^1.9.5",
